@@ -6,7 +6,8 @@ import uuid
 from datetime import datetime
 
 class BaseModel:
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
+        tf = "%Y-%m-%dT%H:%M:%S.%f"
         self.id = str(uuid.uuid4())
         self.updated_at = datetime.utcnow()
         self.created_at = datetime.utcnow()
@@ -34,8 +35,6 @@ class BaseModel:
         the_name = self.__class__.__name__
         the_dict = self.__dict__
         return "[{}] ({}) {}".format(the_name, self.id, the_dict)
-
-
 
 my_model = BaseModel()
 my_model.name = "My First Model"
