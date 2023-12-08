@@ -8,9 +8,18 @@ from datetime import datetime
 class BaseModel:
     def __init__(self, *args, **kwargs):
         tf = "%Y-%m-%dT%H:%M:%S.%f"
-        self.id = str(uuid.uuid4())
-        self.updated_at = datetime.utcnow()
-        self.created_at = datetime.utcnow()
+        if kwargs:
+            for i, j in kwargs:
+                if i == 'id':
+                    self.__dict__[i] = str(j)
+                elif i in ("created_at", "updated_at"):
+                    self.__dict__[i] = datetime.strptime(j, tf)
+                else:
+                    self.__dict__[i] = j
+        else:
+            self.id = str(uuid.uuid4())
+            self.updated_at = datetime.utcnow()
+            self.created_at = datetime.utcnow()
 
     def to_dict(self):
         """
