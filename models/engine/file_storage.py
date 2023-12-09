@@ -38,6 +38,6 @@ class FileStorage:
                 data = json.load(f)
                 for value in data.values():
                     cls = value["__class__"]
-                   self.new(eval(cls)(**value))
+                    self.new(eval(cls)(**value))
         except Exception:
             pass
