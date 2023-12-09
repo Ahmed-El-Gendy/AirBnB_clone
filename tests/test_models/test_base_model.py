@@ -1,13 +1,14 @@
 #!/usr/bin/python3
 """
-test base model
+test for class  base model
 """
 import unittest
 from models.base_model import BaseModel
 
 
+
 class TestBaseModel(unittest.TestCase):
-    """Test base model"""
+    """Test for class base model"""
     def test_init(self):
         """test init"""
         the_model = BaseModel()
@@ -16,14 +17,14 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsNotNone(the_model.id)
 
     def test_str(self):
-        """test str"""
+        """test method  str"""
         the_model = BaseModel()
         self.assertTrue(str(the_model).startswith('[BaseModel]'))
         self.assertIn(the_model.id, str(the_model))
         self.assertIn(str(the_model.__dict__), str(the_model))
 
     def test_dict(self):
-        """test dict"""
+        """test method  dict"""
         the_model = BaseModel()
         the_dict = the_model.to_dict()
         t1 = the_dict["updated_at"]
@@ -35,7 +36,7 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(the_model.id, the_dict["id"])
 
     def test_save(self):
-        """test save"""
+        """test method save"""
         the_model = BaseModel()
         before_update = the_model.updated_at
         now_update = the_model.save()
