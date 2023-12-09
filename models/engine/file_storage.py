@@ -12,7 +12,7 @@ class FileStorage:
 
     def all(self):
         """ return all objects"""
-        return self.__objects
+        return FileStorage.__objects
 
     def new(self, obj):
         """ sets in __objects the obj with
@@ -22,17 +22,17 @@ class FileStorage:
 
     def save(self):
         """ to the JSON file """
-        with open(self.__file_path, 'w+') as f:
-            serialized = {}
-            for k, v in self.__objects.items():
-                serialized[k] = v.to_dict()
+        serialized = {}
+        for k, v in self.__objects.items():
+            serialized[k] = v.to_dict()
+        with open(self.__file_path, 'w+', encoding="utf-8") as f:
             json.dump(serialized, f)
 
     def reload(self):
         """ deserializes the JSON file """
         try:
-            with open(self.__file_path, 'r') as f:
-                data = json.loads(f.read())
+            with open(self.__file_path, 'r', encoding="utf-8") as f:
+                data = json.load(f)
                 for value in data.values():
                     cls = value["__class__"]
                     self.new(eval(cls)(**value))
