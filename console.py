@@ -117,6 +117,26 @@ class HBNBCommand(cmd.Cmd):
                 for i, j in ob.items():
                     if i.split('.')[0] == "User":
                         print(str(j))
+            elif s[0] == "Place":
+                for i, j in ob.items():
+                    if i.split('.')[0] == "Place":
+                        print(str(j))
+            elif s[0] == "State":
+                for i, j in ob.items():
+                    if i.split('.')[0] == "State":
+                        print(str(j))
+            elif s[0] == "City":
+                for i, j in ob.items():
+                    if i.split('.')[0] == "City":
+                        print(str(j))
+            elif s[0] == "Amenity":
+                for i, j in ob.items():
+                    if i.split('.')[0] == "Amenity":
+                        print(str(j))
+            elif s[0] == "Review":
+                for i, j in ob.items():
+                    if i.split('.')[0] == "Review":
+                        print(str(j))
 
     def do_update(self, args):
         """update the attributes"""
