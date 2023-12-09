@@ -7,7 +7,8 @@ import cmd
 
 class HBNBCommand(cmd.Cmd):
     """
-    the class
+    the class (cosole for web) new class 
+    saged ryan
     """
     prompt = "(hbnb) "
 
