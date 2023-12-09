@@ -1,17 +1,15 @@
 #!/usr/bin/python3
 """ serialization-deserialization """
 
-
 import json
 from models.base_model import BaseModel
-
 
 
 class FileStorage:
     """ for file storage """
     __file_path = "file.json"
     __objects = {}
-    
+
     def all(self):
         """ return all """
         return self.__objects
@@ -40,6 +38,3 @@ class FileStorage:
                     self.new(eval(cls)(**value))
         except Exception:
             pass
-
-
-

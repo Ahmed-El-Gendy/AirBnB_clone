@@ -2,7 +2,6 @@
 """ new """
 
 
-
 class Place(BaseModel):
     """ new """
     city_id = ""

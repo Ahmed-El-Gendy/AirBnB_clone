@@ -9,26 +9,31 @@ class HBNBCommand(cmd.Cmd):
     """
     the class
     """
-    prompt = "(hbnb)"
+    prompt = "(hbnb) "
 
-    def end_of_file(self, arg):
+    def do_EOF(self, arg):
         """
         handle EOF
         """
         print()
         return True
 
-    def quit_app(self, arg):
+    def do_quit(self, arg):
         """
         handle quit
         """
         return True
 
-    def quit_help(self, arg):
+    def help_quit(self):
         """
         handle help quit
         """
         print("Quit command to exit the program")
 
-if __name__ == "main__":
+    def emptyline(self):
+        """ Do nothing"""
+        pass
+
+
+if __name__ == '__main__':
     HBNBCommand().cmdloop()
