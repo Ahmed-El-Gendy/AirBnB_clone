@@ -141,10 +141,7 @@ class HBNBCommand(cmd.Cmd):
         if len(li) < 4:
             print("** value missing **")
             return
-        try:
-            value = eval(li[3])
-        except Exception:
-            pass
+        value = eval(li[3])
         setattr(ob[key], li[2], value)
 
 
