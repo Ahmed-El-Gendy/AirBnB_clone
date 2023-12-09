@@ -7,13 +7,13 @@ from models.base_model import BaseModel
 
 
 class FileStorage:
-    """ for file storage """
+    """ for file storage  new class"""
     __file_path = "file.json"
     __objects = {}
 
     def all(self):
-        """ return all """
-        return self.__objects
+        """ return all objects"""
+        return FileStorage.__objects
 
     def new(self, obj):
         """ sets in __objects the obj with

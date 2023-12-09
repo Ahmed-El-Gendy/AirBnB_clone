@@ -1,10 +1,10 @@
 #!/usr/bin/python3
-""" new """
+""" new module for class basemodel """
 
 from models.base_model import BaseModel
 
 
 class City(BaseModel):
-    """ city """
+    """ city  class inheret from base model class"""
     state_id = ""
     name = ""
