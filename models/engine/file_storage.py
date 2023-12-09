@@ -38,7 +38,7 @@ class FileStorage:
             with open(self.__file_path, 'r', encoding="utf-8") as f:
                 data = json.load(f)
                 if data == None
-                return
+                    return
                 for value in data.values():
                     cls = value["__class__"]
                     self.new(eval(cls)(**value))
