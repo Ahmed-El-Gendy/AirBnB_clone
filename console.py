@@ -56,6 +56,25 @@ class HBNBCommand(cmd.Cmd):
         new = eval(cls)()
         print(new.id)
         new.save()
+    
+    def do_show(self, args):
+        """ show class str """
+        if not args:
+            print("** class name missing **")
+            return
+        li = args.split()
+        if li[0] != "BaseModel":
+            print("** class doesn't exist **")
+            return
+        if len(li) < 2:
+            print("** instance id missing **")
+            return
+        ob = storage.all()
+        data = f"{li[0]}.{li[1]}"
+        if data in ob:
+            print(ob[data])
+        else:
+            print("** no instance found **")
 
 
 if __name__ == '__main__':
