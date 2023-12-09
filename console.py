@@ -21,7 +21,7 @@ class HBNBCommand(cmd.Cmd):
     saged ryan
     """
     prompt = "(hbnb) "
-    my_list = ["BaseModel", "User"]
+    my_list = ["BaseModel", "User", "Place", "State", "City", "Amenity", "Review"]
 
     def do_EOF(self, arg):
         """
