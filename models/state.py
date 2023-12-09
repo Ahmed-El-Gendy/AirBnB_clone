@@ -1,9 +1,9 @@
 #!/user/bin/python3
-""" new """
+""" new class basemodel the parent class """
 
 from models.base_model import BaseModel
 
 
 class State(BaseModel):
-    """ state """
+    """ state child class of basemodel class """
     name = ""
