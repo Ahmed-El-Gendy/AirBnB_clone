@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ serialization-deserialization """
 
+from os import path
 import json
 from models.base_model import BaseModel
 
@@ -22,19 +23,22 @@ class FileStorage:
 
     def save(self):
         """ to the JSON file """
-        with open(self.__file_path, 'w+') as f:
-            serialized = {}
-            for k, v in self.__objects.items():
-                serialized[k] = v.to_dict()
-        json.dump(serialized, f)
+        serialized_objects = {}
+        for key, value in self.__objects.items():
+            serialized_objects[key] = value.to_dict()
+
+        with open(self.__file_path, 'w') as file:
+            json.dump(serialized_objects, file)
 
     def reload(self):
         """ deserializes the JSON file """
-        try:
-            with open(self.__file_path, 'r') as f:
-                data = json.loads(f.read())
-                for value in data.values():
-                    cls = value["__class__"]
-                    self.new(eval(cls)(**value))
-        except Exception:
-            pass
+        if path.exists(self.__file_path):
+            with open(self.__file_path, 'r') as file:
+                loaded_objects = json.load(file)
+                for key, value in loaded_objects.items():
+                    class_name, obj_id = key.split('.')
+                    class_obj = globals()[class_name]
+                    obj_instance = class_obj(**value)
+                    self.__objects[key] = obj_instance
+        else:
+            return
