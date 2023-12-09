@@ -56,7 +56,7 @@ class HBNBCommand(cmd.Cmd):
         new = eval(cls)()
         print(new.id)
         new.save()
-    
+
     def do_show(self, args):
         """ show class str """
         if not args:
@@ -111,6 +111,32 @@ class HBNBCommand(cmd.Cmd):
             for i, j in ob.items():
                 if i.split('.')[0] == "BaseModel":
                     print(str(j))
+
+    def do_update(self, args):
+        """update the attributes"""
+        if not args:
+            print("** class name missing **")
+            return
+        li = args.split()
+        if li[0] != "BaseModel":
+            print("** class doesn't exist **")
+            return
+        if len(li) < 2:
+            print("** instance id missing **")
+            return
+        ob = storage.all()
+        key = f"{li[0]}.{li[1]}"
+        if key not in ob:
+            print("** no instance found **")
+            return
+        if len(li) < 3:
+            print("** attribute name missing **")
+            return
+        if len(li) < 4:
+            print("** value missing **")
+            return
+        value = eval(li[3])
+        setattr(ob[key], li[2], value)
 
 
 if __name__ == '__main__':
