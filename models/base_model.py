@@ -1,14 +1,18 @@
 #!/usr/bin/python3
 """
-our base code
+our base code the parent class
 """
+
+
+
 import uuid
 from datetime import datetime
 import models
 
 
+
 class BaseModel:
-    """base model"""
+    """base model the partent class for user and city and other classes"""
     def __init__(self, *args, **kwargs):
         """init the args and kwargs"""
 
