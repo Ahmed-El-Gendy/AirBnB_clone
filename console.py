@@ -45,6 +45,17 @@ class HBNBCommand(cmd.Cmd):
         """ Do nothing"""
         pass
 
+        def do_create(self, cls):
+            """ create object from basemodel"""
+            if not cls:
+                print("** class name missing **")
+                return
+            if clc != "BaseModel":
+                print("** class doesn't exist **")
+                return
+            new = eval(clc)()
+            new.save()
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
