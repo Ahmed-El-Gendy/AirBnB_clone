@@ -8,6 +8,7 @@ import models
 
 
 class BaseModel:
+    """base model"""
     def __init__(self, *args, **kwargs):
         """init the args and kwargs"""
 

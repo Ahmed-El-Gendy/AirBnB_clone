@@ -7,19 +7,23 @@ from models.base_model import BaseModel
 
 
 class TestBaseModel(unittest.TestCase):
+    """Test base model"""
     def test_init(self):
+        """test init"""
         the_model = BaseModel()
         self.assertIsNotNone(the_model.updated_at)
         self.assertIsNotNone(the_model.created_at)
         self.assertIsNotNone(the_model.id)
 
     def test_str(self):
+        """test str"""
         the_model = BaseModel()
         self.assertTrue(str(the_model).startswith('[BaseModel]'))
         self.assertIn(the_model.id, str(the_model))
         self.assertIn(str(the_model.__dict__), str(the_model))
 
     def test_dict(self):
+        """test dict"""
         the_model = BaseModel()
         the_dict = the_model.to_dict()
         t1 = the_dict["updated_at"]
@@ -31,6 +35,7 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(the_model.id, the_dict["id"])
 
     def test_save(self):
+        """test save"""
         the_model = BaseModel()
         before_update = the_model.updated_at
         now_update = the_model.save()
