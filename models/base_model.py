@@ -6,7 +6,7 @@ our base code the parent class
 
 import uuid
 from datetime import datetime
-import models
+import models import storage
 
 
 class BaseModel:
@@ -16,18 +16,13 @@ class BaseModel:
 
         tf = "%Y-%m-%dT%H:%M:%S.%f"
         if kwargs:
-            for i, j in kwargs.items():
-                if i == 'id':
-                    self.__dict__[i] = str(j)
-                elif i in ("created_at", "updated_at"):
-                    self.__dict__[i] = datetime.strptime(j, tf)
-                elif i != "__class__":
-                    self.__dict__[i] = j
+            for key, value in kwargs.items():
+                setattr(self, key, value)
         else:
             self.id = str(uuid.uuid4())
             self.updated_at = datetime.utcnow()
             self.created_at = datetime.utcnow()
-            models.storage.new(self)
+            storage.new(self)
 
     def to_dict(self):
         """
@@ -44,7 +39,7 @@ class BaseModel:
         updates the public instance attribute with the current datetime
         """
         self.updated_at = datetime.utcnow()
-        models.storage.save()
+        storage.save()
 
     def __str__(self):
         """
