@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ serialization-deserialization """
 
+import os
 import json
 from models.base_model import BaseModel
 
@@ -30,6 +31,8 @@ class FileStorage:
 
     def reload(self):
         """ deserializes the JSON file """
+        if not os.path.exists(FileStorage.__file_path):
+            return
         try:
             with open(self.__file_path, 'r', encoding="utf-8") as f:
                 data = json.load(f)
