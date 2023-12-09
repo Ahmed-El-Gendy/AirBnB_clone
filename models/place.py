@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-""" new """
+"""no modules here"""
 
 
 class Place(BaseModel):
-    """ new """
+    """ new class that inheret from basemodel class (parent class)"""
     city_id = ""
     user_id = ""
     name = ""
