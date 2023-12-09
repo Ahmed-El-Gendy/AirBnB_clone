@@ -21,6 +21,7 @@ class HBNBCommand(cmd.Cmd):
     saged ryan
     """
     prompt = "(hbnb) "
+    my_list = ["BaseModel", "User"]
 
     def do_EOF(self, arg):
         """
@@ -50,7 +51,7 @@ class HBNBCommand(cmd.Cmd):
         if not cls:
             print("** class name missing **")
             return
-        if cls != "BaseModel":
+        if cls not in my_list:
             print("** class doesn't exist **")
             return
         new = eval(cls)()
@@ -63,7 +64,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return
         li = args.split()
-        if li[0] != "BaseModel":
+        if li[0] not in my_list:
             print("** class doesn't exist **")
             return
         if len(li) < 2:
@@ -82,7 +83,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return
         li = args.split()
-        if li[0] != "BaseModel":
+        if li[0] not in my_list:
             print("** class doesn't exist **")
             return
         if len(li) < 2:
@@ -105,11 +106,11 @@ class HBNBCommand(cmd.Cmd):
         s = args.split()
         if len(s) == 1:
             ob = storage.all()
-            if s[0] != "BaseModel":
+            if s[0] not in my_list:
                 print("** class doesn't exist **")
                 return
             for i, j in ob.items():
-                if i.split('.')[0] == "BaseModel":
+                if i.split('.')[0] in my_list:
                     print(str(j))
 
     def do_update(self, args):
@@ -118,7 +119,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return
         li = args.split()
-        if li[0] != "BaseModel":
+        if li[0] not in my_list:
             print("** class doesn't exist **")
             return
         if len(li) < 2:
