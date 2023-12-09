@@ -56,7 +56,7 @@ class HBNBCommand(cmd.Cmd):
             return
         new = eval(cls)()
         print(new.id)
-        new.save()
+        storage.save()
 
     def do_show(self, args):
         """ show class str """
