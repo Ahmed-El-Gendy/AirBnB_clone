@@ -5,13 +5,14 @@ import json
 from models.base_model import BaseModel
 
 
+
 class FileStorage:
-    """ for file storage """
+    """ for file storage  new class"""
     __file_path = "file.json"
     __objects = {}
 
     def all(self):
-        """ return all """
+        """ return all objects"""
         return self.__objects
 
     def new(self, obj):
