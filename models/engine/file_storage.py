@@ -44,7 +44,7 @@ class FileStorage:
             data = None
             with open(self.__file_path, 'r', encoding="utf-8") as f:
                 data = json.load(f)
-                if data == None:
+                if data is None:
                     return
                 for key, value in data.items():
                     cls = value["__class__"]
