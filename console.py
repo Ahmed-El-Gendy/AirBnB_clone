@@ -18,7 +18,6 @@ from models.place import Place
 class HBNBCommand(cmd.Cmd):
     """
     the class (cosole for web) new class
-    saged ryan
     """
     prompt = "(hbnb) "
     my_list = ["BaseModel", "User", "Place", "State", "City", "Amenity"]
