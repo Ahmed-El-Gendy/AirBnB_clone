@@ -14,11 +14,11 @@ class BaseModel:
     def __init__(self, *args, **kwargs):
         """init the args and kwargs"""
 
-        tf = "%Y-%m-%dT%H:%M:%S.%f"
+        DATE_TIME_FORMAT = "%Y-%m-%dT%H:%M:%S.%f"
         if len(kwargs) != 0:
             for i, j in kwargs.items():
                 if i in ("created_at", "updated_at"):
-                    self.__dict__[i] = datetime.strptime(j, tf)
+                    self.__dict__[i] = datetime.strptime(j, DATE_TIME_FORMAT)
                 elif i == "__class__":
                     continue
                 else:
