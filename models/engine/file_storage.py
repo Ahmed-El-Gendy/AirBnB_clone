@@ -31,20 +31,20 @@ class FileStorage:
     def save(self):
         """ to the JSON file """
         serialized = {}
-        for k, v in self.__objects.items():
+        for k, v in FileStorage.__objects.items():
             serialized[k] = v.to_dict()
-        with open(self.__file_path, 'w+', encoding="utf-8") as f:
+        with open(FileStorage.__file_path, 'w+', encoding="utf-8") as f:
             json.dump(serialized, f)
     def reload(self):
         """ deserializes the JSON file """
         if not os.path.exists(FileStorage.__file_path):
             return
         try:
-            with open(self.__file_path, 'r', encoding="utf-8") as f:
+            with open(FileStorage.__file_path, 'r', encoding="utf-8") as f:
                 data = json.load(f)
                 for key, value in data.items():
                     cls = value["__class__"]
-                    self.new(eval(cls)(**value))
+                    FileStorage.new(eval(cls)(**value))
         except Exception:
             pass
         except FileNotFoundError:
