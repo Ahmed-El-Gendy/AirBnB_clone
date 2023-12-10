@@ -45,10 +45,10 @@ class FileStorage:
                 data = json.load(f)
                 for key, value in data.items():
                     cls = value["__class__"]
-                    self.new(key.split('.')[0](**value))
+                    self.new(eval(cls)(**value))
         except Exception:
             pass
         except FileNotFoundError:
             pass
-        except json.JSONDecodeError:
+        except ValueError:
             pass
