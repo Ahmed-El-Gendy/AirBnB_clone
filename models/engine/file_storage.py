@@ -35,7 +35,8 @@ class FileStorage:
             serialized[k] = v.to_dict()
         with open(self.__file_path, 'w+', encoding="utf-8") as f:
             json.dump(serialized, f)
-    """def reload(self):
+
+    def reload(self):
         """ deserializes the JSON file """
         if not os.path.exists(self.__file_path):
             return
@@ -50,4 +51,4 @@ class FileStorage:
         except FileNotFoundError:
             pass
         except ValueError:
-            pass"""
+            pass

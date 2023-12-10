@@ -34,9 +34,9 @@ class BaseModel:
         returns a dictionary containing all keys/values of __dict__
         """
         ramy_dict = self.__dict__.copy()
-        ramy_dict["__class__"] = self.__class__.__name__
-        ramy_dict["created_at"] = self.created_at.isoformat()
-        ramy_dict["updated_at"] = self.updated_at.isoformat()
+        ramy_dict['__class__'] = self.__class__.__name__
+        ramy_dict['created_at'] = self.created_at.isoformat()
+        ramy_dict['updated_at'] = self.updated_at.isoformat()
         return ramy_dict
 
     def save(self):
