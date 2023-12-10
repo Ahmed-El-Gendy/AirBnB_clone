@@ -93,7 +93,7 @@ class HBNBCommand(cmd.Cmd):
         ob = storage.all()
         data = f"{li[0]}.{li[1]}"
         if data in ob:
-            del(ob[data])
+            del (ob[data])
         else:
             print("** no instance found **")
 
