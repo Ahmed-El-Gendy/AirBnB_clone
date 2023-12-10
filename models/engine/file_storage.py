@@ -35,7 +35,6 @@ class FileStorage:
             serialized[k] = v.to_dict()
         with open(self.__file_path, 'w+', encoding="utf-8") as f:
             json.dump(serialized, f)
-
     def reload(self):
         """ deserializes the JSON file """
         if not os.path.exists(FileStorage.__file_path):
@@ -43,7 +42,9 @@ class FileStorage:
         try:
             with open(self.__file_path, 'r', encoding="utf-8") as f:
                 data = json.load(f)
-                FileStorage.__objects = {k: BaseModel(**v) for k, v in data.items()}
+                for key, value in data.items():
+                    cls = value["__class__"]
+                    self.new(eval(cls)(**value))
         except Exception:
             pass
         except FileNotFoundError:
