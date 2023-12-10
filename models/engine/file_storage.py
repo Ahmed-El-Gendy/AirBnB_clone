@@ -45,7 +45,7 @@ class FileStorage:
                 data = json.load(f)
                 for key, value in data.items():
                     cls = value["__class__"]
-                    eval(cls)(**value))
+                    eval(cls)(**value)
                     self.__objects[key] = BaseModel
         except Exception:
             pass
