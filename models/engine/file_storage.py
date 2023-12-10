@@ -45,8 +45,9 @@ class FileStorage:
                 data = json.load(f)
                 for key, value in data.items():
                     cls = value["__class__"]
-                    eval(cls)(**value)
-                    self.__objects[key] = BaseModel
+                    FileStorage.__objects = {
+                        k: cls(**v)
+                        for k, v in deserialized.items()}
         except Exception:
             pass
         except FileNotFoundError:
