@@ -22,7 +22,7 @@ class BaseModel:
                 elif i == "__class__":
                     continue
                 else:
-                     setattr(self, key, value)
+                     setattr(self, i, j)
         else:
             self.id = str(uuid.uuid4())
             self.updated_at = datetime.utcnow()
