@@ -6,7 +6,7 @@ our base code the parent class
 
 import uuid
 from datetime import datetime
-from models
+import models
 
 
 class BaseModel:
