@@ -103,14 +103,8 @@ class HBNBCommand(cmd.Cmd):
             ob = storage.all()
             for i in ob.values():
                 print(str(i))
-            print("** class name missing **")
             return
-        class_name = args.split()[0]
-        if class_name not in self.my_list:
-            print("** class doesn't exist **")
-            return
-        instances = storage.all()[class_name]
-        print(instances)
+
         s = args.split()
         if len(s) == 1:
             ob = storage.all()
