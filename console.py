@@ -105,11 +105,6 @@ class HBNBCommand(cmd.Cmd):
                 print(str(i))
             return
         s = args.split()
-        if not s or s[0] not in HBNBCommand.classes:
-            print("** class name missing **")
-        else:
-            instances = HBNBCommand.classes[args[0]].all()
-            print(instances)
         if len(s) == 1:
             ob = storage.all()
             if s[0] not in self.my_list:
