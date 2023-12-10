@@ -17,7 +17,7 @@ class BaseModel:
         tf = "%Y-%m-%dT%H:%M:%S.%f"
         if len(kwargs) != 0:
             for i, j in kwargs.items():
-                elif i in ("created_at", "updated_at"):
+                if i in ("created_at", "updated_at"):
                     self.__dict__[i] = datetime.strptime(j, tf)
                 elif i == "__class__":
                     continue
