@@ -1,1 +1,23 @@
-0x00. AirBnB clone - The console
+# AirBnB Clone - The Console
+
+## Overview
+This project is the first step towards building an AirBnB clone. The goal is to create a command-line interpreter that manages AirBnB objects, including creating new objects, retrieving objects, performing operations on objects, updating attributes, and destroying objects. The command interpreter will interact with objects of various classes like User, State, City, Place, etc.
+
+## Project Structure
+The project is organized into modules and tests. The main modules include:
+
+- **base_model.py:** Defines the BaseModel class, which serves as the parent class for all other classes. Handles initialization, serialization, and deserialization.
+- **user.py:** Defines the User class, which inherits from BaseModel.
+- **state.py:** Defines the State class, which inherits from BaseModel.
+- **city.py:** Defines the City class, which inherits from BaseModel.
+- **place.py:** Defines the Place class, which inherits from BaseModel.
+- **review.py:** Defines the Review class, which inherits from BaseModel.
+- **amenity.py:** Defines the Amenity class, which inherits from BaseModel.
+- **__init__.py:** Initializes the package.
+- **console.py:** Implements the command-line interpreter using the cmd module.
+
+## Usage
+To run the command-line interpreter, execute the following command:
+
+```bash
+./console.py
