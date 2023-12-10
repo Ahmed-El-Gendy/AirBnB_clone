@@ -37,13 +37,20 @@ class FileStorage:
 
     def reload(self):
         """ deserializes the JSON file """
-        if not os.path.exists(FileStorage.__file_path):
-            return
-        try:
-            with open(self.__file_path, 'r', encoding="utf-8") as f:
-                data = json.load(f)
-                for value in data.values():
-                    cls = value["__class__"]
-                    self.new(eval(cls)(**value))
-        except Exception:
-            pass
+        def reload(self):
+    """Deserializes the JSON file."""
+    if not os.path.exists(FileStorage.__file_path):
+        return
+    try:
+        with open(self.__file_path, 'r', encoding="utf-8") as f:
+            data = json.load(f)
+            for value in data.values():
+                class_name = value["__class__"]
+                model_class = getattr(models, class_name)
+                self.new(model_class(**value))
+    except FileNotFoundError:
+        pass
+    except json.JSONDecodeError:
+        pass
+    except Exception as e:
+        pass
