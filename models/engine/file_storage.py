@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ serialization-deserialization """
 
+
 import os
 import json
 from models.base_model import BaseModel
@@ -46,4 +47,8 @@ class FileStorage:
                     cls = value["__class__"]
                     self.new(eval(cls)(**value))
         except Exception:
+            pass
+        except FileNotFoundError:
+            pass
+        except json.JSONDecodeError:
             pass
