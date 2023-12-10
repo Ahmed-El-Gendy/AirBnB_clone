@@ -15,14 +15,14 @@ class BaseModel:
         """init the args and kwargs"""
 
         tf = "%Y-%m-%dT%H:%M:%S.%f"
-        if kwargs:
+        if len(kwargs) != 0:
             for i, j in kwargs.items():
-                if i == 'id':
-                    self.__dict__[i] = str(j)
                 elif i in ("created_at", "updated_at"):
                     self.__dict__[i] = datetime.strptime(j, tf)
-                elif i != "__class__":
-                    self.__dict__[i] = j
+                elif i == "__class__":
+                    continue
+                else:
+                     setattr(self, key, value)
         else:
             self.id = str(uuid.uuid4())
             self.updated_at = datetime.utcnow()
