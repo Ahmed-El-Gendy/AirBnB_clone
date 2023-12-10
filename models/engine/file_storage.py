@@ -41,8 +41,11 @@ class FileStorage:
         if not os.path.exists(self.__file_path):
             return
         try:
+            data = None
             with open(self.__file_path, 'r', encoding="utf-8") as f:
                 data = json.load(f)
+                if data == None:
+                    return
                 for key, value in data.items():
                     cls = value["__class__"]
                     self.new(eval(cls)(**value))
