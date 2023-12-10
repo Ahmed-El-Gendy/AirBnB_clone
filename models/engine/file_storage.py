@@ -47,7 +47,7 @@ class FileStorage:
                     cls = value["__class__"]
                     FileStorage.__objects = {
                         k: cls(**v)
-                        for k, v in deserialized.items()}
+                        for k, v in data.items()}
         except Exception:
             pass
         except FileNotFoundError:
